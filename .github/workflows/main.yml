@@ -38,3 +38,4 @@ jobs:
         echo "::set-output name=std_out2::$REGION"
 
     - run: echo "${{ steps.test_id.outputs.std_out }}"
+    - run: echo "${{ steps.test_id.outputs.std_out2 }}"
