@@ -12,6 +12,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+env:
+  PROJECT_ID: YOUR_PROJECT_ID # TODO: update Google Cloud project id
+  GAR_LOCATION: YOUR_GAR_LOCATION # TODO: update Artifact Registry location
+  SERVICE: YOUR_SERVICE_NAME # TODO: update Cloud Run service name
+  REGION: YOUR_SERVICE_REGION # TODO: update Cloud Run service region
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,5 +35,6 @@ jobs:
         user_list="${user_list//$'\n'/\\n}"
         echo $user_list
         echo "::set-output name=std_out::$user_list"
+        echo "::set-output name=std_out2::$REGION"
 
     - run: echo "${{ steps.test_id.outputs.std_out }}"
